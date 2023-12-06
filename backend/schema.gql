@@ -1,0 +1,43 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Height {
+  meters: Float!
+  feet: Float!
+}
+
+type Diameter {
+  meters: Float!
+  feet: Float!
+}
+
+type Mass {
+  kg: Float!
+  lb: Float!
+}
+
+type Rocket {
+  id: ID!
+  name: String!
+  height: Height!
+  diameter: Diameter!
+  mass: Mass!
+  flickr_images: [String!]!
+  type: String!
+  active: Boolean!
+  stages: Float!
+  boosters: Float!
+  cost_per_launch: Float!
+  success_rate_pct: Float!
+  first_flight: String!
+  country: String!
+  company: String!
+  wikipedia: String!
+  description: String!
+}
+
+type Query {
+  getAllRockets: [Rocket!]!
+  getOneRocket(id: ID!): Rocket!
+}
