@@ -1,6 +1,8 @@
 import { Resolver, Query, Args, ID, Int } from '@nestjs/graphql';
 import { LaunchesService } from '../launches.service';
 import { LaunchesDTO } from '../dto/launches.dto';
+import { UseInterceptors } from '@nestjs/common';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Resolver(() => LaunchesDTO)
 export class LaunchesResolver {

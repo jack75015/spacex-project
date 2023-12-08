@@ -2,7 +2,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { LaunchesModule } from './launches/launches.module';
-
 @Module({
   imports: [
     LaunchesModule,
