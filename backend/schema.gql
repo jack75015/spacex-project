@@ -2,42 +2,107 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Height {
-  meters: Float!
-  feet: Float!
+type Fairings {
+  reused: Boolean
+  recovery_attempt: Boolean
+  recovered: Boolean
+  ships: AnyType
 }
 
-type Diameter {
-  meters: Float!
-  feet: Float!
+"""Scalar type to represent any kind of value"""
+scalar AnyType
+
+type Patch {
+  small: String!
+  large: String!
 }
 
-type Mass {
-  kg: Float!
-  lb: Float!
+type Reddit {
+  campaign: String!
+  launch: String
+  media: String!
+  recovery: String!
 }
 
-type Rocket {
-  id: ID!
-  name: String!
-  height: Height!
-  diameter: Diameter!
-  mass: Mass!
-  flickr_images: [String!]!
-  type: String!
-  active: Boolean!
-  stages: Float!
-  boosters: Float!
-  cost_per_launch: Float!
-  success_rate_pct: Float!
-  first_flight: String!
-  country: String!
-  company: String!
+type Flickr {
+  small: [String!]!
+  original: [String!]!
+}
+
+type Links {
+  patch: Patch!
+  reddit: Reddit!
+  flickr: Flickr!
+  presskit: String
+  webcast: String!
+  youtube_id: String!
+  article: String!
   wikipedia: String!
-  description: String!
+}
+
+type Failure {
+  time: Float!
+  altitude: Float
+  reason: String!
+}
+
+type Core {
+  core: String!
+  flight: Float!
+  gridfins: Boolean!
+  legs: Boolean!
+  reused: Boolean!
+  landing_attempt: Boolean!
+  landing_success: Boolean!
+  landing_type: String!
+  landpad: AnyType
+}
+
+type LaunchDTO {
+  fairings: Fairings
+  links: Links!
+  static_fire_date_utc: String
+  static_fire_date_unix: Float
+  net: Boolean!
+  window: Float!
+  rocket: String!
+  success: Boolean!
+  failures: [Failure!]!
+  details: String
+  crew: AnyType
+  ships: [String!]!
+  capsules: [String!]!
+  payloads: [String!]!
+  launchpad: String!
+  flight_number: Float!
+  name: String!
+  date_utc: String!
+  date_unix: Float!
+  date_local: String!
+  date_precision: String!
+  upcoming: Boolean!
+  cores: [Core!]!
+  auto_update: Boolean!
+  tbd: Boolean!
+  launch_library_id: String!
+  id: String!
+}
+
+type LaunchesDTO {
+  docs: [LaunchDTO!]!
+  totalDocs: Float!
+  offset: Float
+  limit: Float!
+  totalPages: Float!
+  page: Float!
+  pagingCounter: Float!
+  hasPrevPage: Boolean!
+  hasNextPage: Boolean!
+  prevPage: Float
+  nextPage: Float
 }
 
 type Query {
-  getAllRockets: [Rocket!]!
-  getOneRocket(id: ID!): Rocket!
+  getOneLaunch(id: ID!): LaunchDTO!
+  getAllLaunches(page: Int! = 1, limit: Int! = 10): LaunchesDTO!
 }
